@@ -26,7 +26,7 @@ export default function OrderForm(props) {
       body: JSON.stringify({
         order_item: orderItem,
         quantity,
-        ordered_by: auth.email || 'Unknown!',
+        ordered_by: auth.email,
       }),
       headers: {
         'Content-Type': 'application/json',

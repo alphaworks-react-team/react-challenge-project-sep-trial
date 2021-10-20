@@ -18,7 +18,7 @@ const OrdersList = props => {
     }
 
     const dateTimeFormat = new Intl.DateTimeFormat(currentLanguage, formatOptions)
-    const date = new Date()
+    const date = new Date(order.createdAt)
     const createdDate = dateTimeFormat.format(date)
     return (
       <div className='row view-order-container' key={order._id}>
@@ -36,11 +36,7 @@ const OrdersList = props => {
             onClick={event => {
               event.preventDefault()
 
-              console.log(
-                { Window_Object: window },
-                { Language_Info: window.navigator.language },
-                'hello'
-              )
+              console.log({ Orders_Object: orders }, 'hello')
             }}
           >
             Edit
