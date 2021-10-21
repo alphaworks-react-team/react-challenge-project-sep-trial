@@ -21,16 +21,17 @@ const OrdersList = props => {
     const date = new Date(order.createdAt)
     const createdDate = dateTimeFormat.format(date)
     const orderedBy = (() => {
-      return order.ordered_by !== null || undefined
-        ? order.ordered_by.split('@', 1)
-        : order.ordered_by
+      const results =
+        order.ordered_by !== null || undefined
+          ? order.ordered_by.split('@', 1).toString()
+          : order.ordered_by
+      return results
     })()
-
     return (
       <div className='row view-order-container' key={order._id}>
         <div className='col-md-4 view-order-left-col p-3'>
           <h2>{order.order_item}</h2>
-          <p>Ordered by: {...orderedBy}</p>
+          <p>Ordered by: {orderedBy}</p>
         </div>
         <div className='col-md-4 d-flex view-order-middle-col'>
           <p>Order placed at {createdDate}</p>
