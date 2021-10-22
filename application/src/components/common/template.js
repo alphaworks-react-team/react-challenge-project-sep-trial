@@ -1,17 +1,25 @@
-import React from 'react';
-import { Nav } from '../../components';
 import './template.css';
 
+import React from 'react';
+
+import { Link } from 'react-router-dom';
+
+import { Nav } from '../../components';
+
 const Template = props => {
-    return (
-        <div className="bg-layer">
-            <div className="fg-layer">
-                <label className="logo">Bruce's Diner</label>
-                <Nav />
-                {props.children}
-            </div>
-        </div>
-    );
+  return (
+    <div className='bg-layer'>
+      <div className='fg-layer'>
+        <Link style={{ color: 'inherit' }} to='/'>
+          <label style={{ cursor: 'pointer' }} className='logo'>
+            Bruce's Diner
+          </label>
+        </Link>
+        <Nav />
+        {props.children}
+      </div>
+    </div>
+  )
 }
 
-export default Template;
+export default Template

@@ -1,16 +1,30 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Main, Login, OrderFormHook, ViewOrdersHook } from '../components';
 
-const AppRouter = (props) => {
+import { useSelector } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
+
+import {
+  Login,
+  Main,
+  OrderFormHook,
+  ViewOrdersHook,
+} from '../components';
+import GuardedRoute from './GuardedRoute';
+
+const AppRouter = props => {
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+  const token = useSelector(state => state.auth.token)
   return (
     <Router>
-      <Route path="/" exact component={Main} />
-      <Route path="/login" exact component={Login} />
-      <Route path="/order" exact component={OrderFormHook} />
-      <Route path="/view-orders" exact component={ViewOrdersHook} />
+      <Route path='/' exact component={Main} />
+      <Route path='/login' component={Login} />
+      <GuardedRoute path='/order' component={OrderFormHook} token={token} />
+      <GuardedRoute path='/view-orders' component={ViewOrdersHook} token={token} />
     </Router>
-  );
+  )
 }
 
-export default AppRouter;
+export default AppRouter
