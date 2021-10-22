@@ -2,6 +2,7 @@ import './nav.css';
 
 import React from 'react';
 
+// import { BiUserCircle } from 'react-icons/bi';
 import {
   useDispatch,
   useSelector,
@@ -36,9 +37,10 @@ const Nav = props => {
       <Link to={'/view-orders'} className='nav-link' id='middle-link'>
         <div className='nav-link-style'>
           <label className='nav-label'>
-            Logged In As: <b />
-            {auth.user.email}
+            {/* <BiUserCircle /> */}
+            Logged In As:
           </label>
+          <p id='nav-user-info'>{auth.user.email}</p>
         </div>
       </Link>
     )

@@ -28,3 +28,8 @@
     flex: 1;
     flex-direction: row;
 }
+
+#nav-user-info {
+font-family: "Optima";
+font-size: 1em;
+}
