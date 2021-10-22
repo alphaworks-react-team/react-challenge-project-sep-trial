@@ -29,9 +29,24 @@ const Nav = props => {
       </Link>
     )
   })()
+  const UserLink = (() => {
+    return !authStatus ? (
+      ''
+    ) : (
+      <Link to={'/view-orders'} className='nav-link' id='middle-link'>
+        <div className='nav-link-style'>
+          <label className='nav-label'>
+            Logged In As: <b />
+            {auth.user.email}
+          </label>
+        </div>
+      </Link>
+    )
+  })()
 
   return (
     <div className='nav-strip'>
+      {UserLink}
       <Link to={'/order'} className='nav-link'>
         <div className='nav-link-style'>
           <label className='nav-label'>Order Form</label>
