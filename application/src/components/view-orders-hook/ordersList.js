@@ -1,7 +1,10 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 const OrdersList = props => {
   const { orders } = props
+  const auth = useSelector(state => state.auth)
   if (!props || !props.orders || !props.orders.length)
     return (
       <div className='empty-orders'>
@@ -20,17 +23,12 @@ const OrdersList = props => {
     const dateTimeFormat = new Intl.DateTimeFormat(currentLanguage, formatOptions)
     const date = new Date(order.createdAt)
     const createdDate = dateTimeFormat.format(date)
-    const orderedBy = (() => {
-      return order.ordered_by !== null || undefined
-        ? order.ordered_by.split('@', 1)
-        : order.ordered_by
-    })()
-
+    const orderedBy = auth.user.screenName
     return (
       <div className='row view-order-container' key={order._id}>
         <div className='col-md-4 view-order-left-col p-3'>
           <h2>{order.order_item}</h2>
-          <p>Ordered by: {...orderedBy}</p>
+          <p>Ordered by: {orderedBy}</p>
         </div>
         <div className='col-md-4 d-flex view-order-middle-col'>
           <p>Order placed at {createdDate}</p>

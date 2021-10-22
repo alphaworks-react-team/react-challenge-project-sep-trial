@@ -1,5 +1,8 @@
-import { LOGIN, LOGOUT } from './types';
-import { SERVER_IP } from '../../private'
+import { SERVER_IP } from '../../private';
+import {
+  LOGIN,
+  LOGOUT,
+} from './types';
 
 const finishLogin = (email, token) => {
     return {
@@ -33,7 +36,6 @@ export const loginUser = (email, password) => {
 
 export const logoutUser = () => {
     return {
-        type: LOGOUT,
-        payload: null,
+      type: LOGOUT,
     }
 }
